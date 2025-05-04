@@ -1,0 +1,38 @@
+
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: P0stgr3s
+      POSTGRES_DB: traffic
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: traffic_backend
+    environment:
+      DB_URL: postgres://postgres:P0stgr3s@db:5432/traffic
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend/traffic
+      dockerfile: Dockerfile
+    container_name: traffic_frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+volumes:
+  pg_data:
+
+    

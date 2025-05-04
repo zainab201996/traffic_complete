@@ -1,0 +1,7 @@
+# Ignore node_modules in backend and frontend
+/backend/node_modules/
+/frontend/traffic/node_modules/
+
+# Ignore any other directories or files you want to exclude
+/backend/.env
+/docker-compose.override.yml
