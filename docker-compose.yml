@@ -17,7 +17,7 @@ services:
       dockerfile: Dockerfile
     container_name: traffic_backend
     environment:
-      DB_URL: postgres://postgres:P0stgr3s@db:5432/traffic
+      DB_URL: postgres://postgres:<password>@db:5432/traffic
     ports:
       - "3000:3000"
     depends_on:
