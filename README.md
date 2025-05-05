@@ -10,5 +10,11 @@ The application will run on localhost:8080 and Rest APIs will work on localhost:
 
 Dockerfiles are present in frontend and backend.
 
+Unit test files are created in both the backend and frontend.
+
+To run the tests, move to the backend and frontend folder and run the following command
+
+**npm test**
+
 
 
