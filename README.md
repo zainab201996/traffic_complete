@@ -6,7 +6,7 @@ Postgres Database is setup in the container itself.
 
  
 
-1. To run the application use the command 
+1. To run the application, you need to install Docker on your system and use the following command 
 
   **docker-compose up --build**
 
