@@ -18,8 +18,8 @@ services:
     container_name: traffic_backend
     environment:
       DB_URL: postgres://postgres:<password>@db:5432/traffic
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     depends_on:
       - db
 
@@ -30,6 +30,15 @@ services:
     container_name: traffic_frontend
     ports:
       - "8080:80"
+    depends_on:
+      - nginx
+  nginx:
+    image: nginx:latest
+    container_name: nginx_proxy_gateway
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - backend
 volumes:
