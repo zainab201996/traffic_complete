@@ -6,7 +6,7 @@ Postgres Database is setup in the container itself.
 
  
 
-To run the application use the command 
+1. To run the application use the command 
 
   **docker-compose up --build**
 
@@ -17,11 +17,11 @@ To run the application use the command
 
    There we will have a bar chart with initial data i.e.the countries and their traffic count based upon the db records. On clicking any bar, the Pie chart will appear with that country's vehical data(the vehicle type and the count)
 
-In Docker compose nginx service is run for load balancing. This will initiate x instances of backend by running
+2. In Docker compose nginx service is run for load balancing. This will initiate x instances of backend by running
 
    **docker-compose up --build --scale backend=x(x is the number of instances you want to create)**
 
-   Now **nginx** based upon the header, payload and request will route to the backend container which has less load.
+   Now **nginx** based upon the header, payload and request will route to the backend container which has less load. This will ensure that when the request per second (RPS) will scale from 5 to 50 to 500, the app will not be choked.
 
 Rest APIs will work on localhost:3000 as per the docker setup.
 
@@ -35,6 +35,7 @@ Unit test files are created in both the backend and frontend.
 To run the tests, move to the backend and frontend folder and run the following command
 
 **npm test**
+
 
 
 
