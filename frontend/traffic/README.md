@@ -5,3 +5,7 @@ To run the frontend application
 Run the following command,
 
 **npm run dev**
+
+The unit tests will be run by 
+
+**npm test**
