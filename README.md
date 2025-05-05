@@ -4,16 +4,29 @@ Frontend is developed using Vite for ReactJS. The interactive graphs are created
 Backend is developed using NodeJS and Express for REST API.
 Postgres Database is setup in the container itself.
 
+ 
+
 To run the application use the command 
 
-  **docker-compose up**
+  **docker-compose up --build**
 
-  
-The application will run on 
+ 
+   The front end of the application will run on 
+   
+   **localhost:8080**
 
-**localhost:8080**
+   There we will have a bar chart with initial data i.e.the countries and their traffic count based upon the db records. On clicking any bar, the Pie chart will appear with that country's vehical data(the vehicle type and the count)
 
-and Rest APIs will work on localhost:3000 as per the docker setup.
+In Docker compose nginx service is run for load balancing. This will initiate x instances of backend by running
+
+   **docker-compose up --build --scale backend=x(x is the number of instances you want to create)**
+
+   Now **nginx** based upon the header, payload and request will route to the backend container which has less load.
+
+Rest APIs will work on localhost:3000 as per the docker setup.
+
+1. http://localhost:3000/traffic-countries (For getting a list of traffic vehicle density in countries)
+2. http://localhost:3000/vehicle-distribution/:id (The vehicle distribution in a specific country. ID is the id returned in above API call)
 
 Dockerfiles are present in frontend and backend.
 
